@@ -1,2 +1,0 @@
-# mbihpeak
-Mountain hiking website
