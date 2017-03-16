@@ -489,8 +489,8 @@ ol.type li a.active { font-weight: 700; }
 	margin: 30px 0;
 	color: #d1d1d1;
 }
-/* Contact Section */
-#tf-contact{
+/* register Section */
+#tf-register{
 	padding: 80px 0;
 }
 
@@ -500,7 +500,7 @@ label {
 	font-weight: 400;
 	font-family: 'Open Sans', sans-serif;
 }
-#tf-contact .form-control {
+#tf-register .form-control {
 	display: block;
 	width: 100%;
 	padding: 6px 12px;
@@ -518,7 +518,7 @@ label {
 	transition: none;
 }
 
-#tf-contact .form-control:focus {
+#tf-register .form-control:focus {
 	border-color: inherit;
 	outline: 0;
 	-webkit-box-shadow: transparent;
