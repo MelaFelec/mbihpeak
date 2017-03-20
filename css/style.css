@@ -145,7 +145,7 @@ font-weight: 900;
 	padding: 20% 0 0;
 }
 
-.color{
+.color1{
 	color: #fcac45;
 }
 
@@ -346,8 +346,28 @@ img.img-circle.team-img {
 }
 /* Equipment Section
 ==============================*/
-#tf-works{
+#tf-eqip{
 	padding: 80px 0;
+	background: url(../img/09.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: #ffffff;
+}
+#tf-eqip .overlay{
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.73) 17%, rgba(0,0,0,0.66) 35%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.8)), color-stop(17%,rgba(0,0,0,0.73)), color-stop(35%,rgba(0,0,0,0.66)), color-stop(62%,rgba(0,0,0,0.55)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+	padding: 80px 0;
+	background-attachment: fixed;
+}
+.color{
+	color: #5a5a5a;
 }
 .categories{
 	padding: 10px 0;
@@ -355,7 +375,7 @@ img.img-circle.team-img {
 ul.cat li{
 	display: inline-block;
 }
-#tf-works li.pull-right {
+#tf-eqip li.pull-right {
 	margin-top: 10px;
 }
 ol.type li{
@@ -445,7 +465,7 @@ ol.type li a.active { font-weight: 700; }
 .hover-bg:hover .hover-text{
 	opacity: 1;
 }
-#tf-works i.fa {
+#tf-eqip i.fa {
 	height: 30px;
 	width: 30px;
 	border: 1px solid #FCAC45;
@@ -612,8 +632,9 @@ ul.cat li{
 	height: 750px;
 	background-attachment: fixed;
 }
-#tf.gallery .color{
-	color: #fcac45;
+
+.colour{
+	color: #FCAC45;
 }
 #tf-gallery li.pull-right {
 	margin-top: 10px;
