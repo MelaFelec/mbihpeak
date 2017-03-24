@@ -149,13 +149,13 @@ font-weight: 900;
 	color: #fcac45;
 }
 
-button.btn.tf-btn.btn-success {
-	align-content: center;
+.text-center button {
+	display: inline-block;
 	background: #FCAC45;
 	/*border: 0;
 	border-radius: 0;
-	padding: 10px 15px;*/
-	margin-right: 80%;
+	padding: 10px 15px;
+	margin:0 auto;*/
 	padding: 10px 40px;
 	color: #ffffff;
 	text-transform: uppercase;
