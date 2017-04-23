@@ -69,7 +69,7 @@
             <li><a href="#tf-services" class="page-scroll">Tours</a></li>
             <li><a href="#tf-eqip" class="page-scroll">Equipment</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="#tf-register" class="page-scroll">Register</a></li>
+            <li><a href="#tf-signin" class="page-scroll">Register/Sign In</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -82,7 +82,7 @@
             <div class="content">
                 <h1>Welcome on <strong><span class="color1">MBiHPeak</span></strong></h1>
                 <p class="lead"> "It is not the <strong><span class="color1">mountain</span></strong> we conquer but ourselves."</p>
-                <button type="submit" class="btn tf-btn btn-success" onclick="window.location.href='#tf-register'">Register</button>
+                <button type="submit" class="btn tf-btn btn-success" onclick="window.location.href='#tf-signin'">Register</button>
                 <br></br>
                 <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
             </div>
@@ -652,14 +652,20 @@
 -->
     <!-- Register Section
     ==========================================-->
-    <div id="tf-register" class="text-center">
-        <div class="container">
+    <div id="tf-signin" class="text-center">
+        <div class="container" style="margin:auto">
 
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-8 col-md-offset-2" style='display'>
 
                     <div class="section-title center">
-                        <h2>Feel free to <strong>register</strong></h2>
+                        <h2>New to MBIHPeak? <br></br>Feel free to <strong>register</strong></h2>
+                        <br></br><button class="btn tf-btn btn-primary" onclick="window.location.href='register.html'">Register</button>
+                        <div class="line">
+                            <hr>
+                        </div>
+                        <div class="clearfix"></div>
+                        <h2><strong>SIGN IN</strong></h2>
                         <div class="line">
                             <hr>
                         </div>
@@ -693,10 +699,11 @@
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
                       -->
-                        <button type="submit" class="btn tf-btn btn-default">Sign Up</button>
+                        <button type="submit" class="btn tf-btn btn-default">Sign In</button>
                     </form>
 
                 </div>
+
             </div>
 
         </div>
