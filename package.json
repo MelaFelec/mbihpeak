@@ -1,0 +1,31 @@
+{
+  "name": "mbihpeak",
+  "version": "1.0.0",
+  "description": "Mountains of MNE and BiH",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelaFelec/mbihpeak.git"
+  },
+  "keywords": [
+    "mean"
+  ],
+  "author": "Mela Felec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelaFelec/mbihpeak/issues"
+  },
+  "homepage": "https://github.com/MelaFelec/mbihpeak#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.7",
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6"
+  }
+}
