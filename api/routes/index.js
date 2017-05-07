@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
-// var ctrlRegister = require('../controllers/RegisterController.js');
-// router
-//   .route('/register')
-//     .get(ctrlRegister.register);
+
+var ctrlAssociations = require('../controllers/associations.controllers.js');
+
+router
+  .route('/associations')
+  .get(ctrlAssociations.getAllAssociations);
 
 module.exports = router;

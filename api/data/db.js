@@ -25,3 +25,5 @@ process.on('SIGUSR2', function(){
     process.kill(process.pid, 'SIGUSR2');
   });
 });
+
+require('./associations.model');

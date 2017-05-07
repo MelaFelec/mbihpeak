@@ -114,13 +114,16 @@
 
     <!-- Team Page
     ==========================================-->
-    <div id="tf-team" class="text-center">
+    <div id="tf-team" class="text-center" ng-controller="AssociationsController as ac">
         <div class="overlay">
             <div class="container">
                 <div class="section-title center">
                     <h2>Meet and join our <strong> <br></br> associations</strong></h2>
                     <div class="line">
                         <hr>
+                        <ul>
+                          <li ng-repeat="assoc in ac.associations">{{assoc.name}}</li>
+                        </ul>
                     </div>
                 </div>
 
