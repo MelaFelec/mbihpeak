@@ -1,14 +1,10 @@
 var mongoose = require('mongoose');
 
-var associationSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
   _id : {
     type : Schema.Types.ObjectId
   },
-  name : {
-    type : String,
-    required : true
-  },
-  description : {
+  fullname : {
     type : String,
     required : true
   },
@@ -39,11 +35,7 @@ var associationSchema = new mongoose.Schema({
   password : {
     type : String,
     required : true
-  },
-  tour_id : {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Tour',
-    required : true
   }
 });
 
-mongoose.model('Association', associationSchema, 'associations');
+mongoose.model('User', userSchema, 'users');
