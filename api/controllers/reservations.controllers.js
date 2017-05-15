@@ -28,7 +28,7 @@ module.exports.getOneReservation = function(req, res){
     .status(response.status)
     .json(response.message);
   });
-
+};
   module.exports.addOneReservation = function(req, res) {
   console.log("POST new reservation");
 

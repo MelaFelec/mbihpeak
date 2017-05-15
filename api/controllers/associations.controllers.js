@@ -19,7 +19,7 @@ module.exports.getAllAssociations = function(req, res){
     });
 };
 
-module.exports.getOneAssociation = function(req, res){
+module.exports.getOneAssociation = function(req, res) {
   var id = req.params.id;
 
   console.log(id);
@@ -32,11 +32,11 @@ module.exports.getOneAssociation = function(req, res){
       message : doc
     };
     if(err){
-      console.log('Error finding associations');
+      console.log("Error finding associations");
       response.status = 500;
       response.message = err;
     } else if (!doc) {
-      console.log('Association id not found in db', id);
+      console.log("Association id not found in db", id);
       response.status = 404;
       response.message = {
         "message" : "Association id not found" + id
@@ -46,8 +46,9 @@ module.exports.getOneAssociation = function(req, res){
     .status(response.status)
     .json(response.message);
   });
+};
 
-  module.exports.addOneAssociation = function(req, res) {
+module.exports.addOneAssociation = function(req, res) {
   console.log("POST new association");
 
   Association

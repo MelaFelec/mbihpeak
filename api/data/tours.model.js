@@ -3,7 +3,7 @@ var statuses = ['A', 'C', 'F', 'O'];
 
 var tourSchema = new mongoose.Schema({
   _id : {
-    type : Schema.Types.ObjectId
+    type : mongoose.Schema.Types.ObjectId
   },
   name : {
     type : String,

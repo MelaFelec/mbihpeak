@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var associationSchema = new mongoose.Schema({
   _id : {
-    type : Schema.Types.ObjectId
+    type : mongoose.Schema.Types.ObjectId
   },
   name : {
     type : String,

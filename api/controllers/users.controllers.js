@@ -28,6 +28,7 @@ module.exports.getOneUser = function(req, res){
     .status(response.status)
     .json(response.message);
   });
+};
 
 module.exports.addOneUser = function(req, res) {
   console.log("POST new user");

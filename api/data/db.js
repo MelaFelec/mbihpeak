@@ -27,3 +27,7 @@ process.on('SIGUSR2', function(){
 });
 
 require('./associations.model');
+require('./users.model');
+require('./tours.model');
+require('./mountains.model');
+require('./reservations.model');

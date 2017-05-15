@@ -47,6 +47,8 @@ module.exports.getOneTour = function(req, res){
     .json(response.message);
   });
 
+};
+
 module.exports.addOneTour = function(req, res) {
   console.log("POST new tour");
 
@@ -58,7 +60,7 @@ module.exports.addOneTour = function(req, res) {
       end_date : req.body.end_date,
       end_reservation_date : req.body.end_reservation_date,
       tour_status : req.body.tour_status,
-      number_of_available_places : parseInt(req.body.number_of_available_places),
+      number_of_available_places : parseInt(req.body.number_of_available_places,10),
       price : parseFloat(req.body.price),
       mountain_id : req.body.mountain_id
     }, function(err, tour) {

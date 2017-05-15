@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var reservationSchema = new mongoose.Schema({
   _id : {
-    type : Schema.Types.ObjectId
+    type : mongoose.Schema.Types.ObjectId
   },
   tour_id : {
     type: mongoose.Schema.Types.ObjectId, ref: 'Tour',
