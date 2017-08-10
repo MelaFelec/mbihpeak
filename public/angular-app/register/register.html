@@ -14,49 +14,61 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+                    <div ng-if="rc.message" class="alert alert-success" role="alert">
+                        <p>{{rc.message}}</p>
+                    </div>
+                    <div ng-if="rc.error" class="alert alert-danger" role="alert">
+                        <p>{{rc.error}}</p>
+                    </div>
 
                     <form>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" ng-model="user.email" placeholder="Enter email" required="Please enter">
+                                    <input type="email" class="form-control" ng-model="rc.email" placeholder="Enter email" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" ng-model="user.username" placeholder="Enter username" required="Please enter">
+                                    <input type="text" class="form-control" ng-model="rc.username" placeholder="Enter username" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" ng-model="user.password" placeholder="Enter password" required="Please enter">
+                                    <input type="password" class="form-control" ng-model="rc.password" placeholder="Enter password" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="name">Name and Surname</label>
-                                    <input type="text" class="form-control" ng-model="user.name" placeholder="Enter name and surname" required="Please enter">
+                                    <input type="text" class="form-control" ng-model="rc.name" placeholder="Enter name and surname" required="Please enter">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" class="form-control" ng-model="rc.state" placeholder="Enter state" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input type="text" class="form-control" ng-model="user.city" placeholder="Enter city" required="Please enter">
+                                    <input type="text" class="form-control" ng-model="rc.city" placeholder="Enter city" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input type="text" class="form-control" ng-model="user.address" placeholder="Enter address" required="Please enter">
+                                    <input type="text" class="form-control" ng-model="rc.address" placeholder="Enter address" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="phone">Phone number</label>
-                                    <input type="text" class="form-control" ng-model="user.phone" placeholder="Enter phone number" required="Please enter">
+                                    <label for="phone_number">Phone number</label>
+                                    <input type="text" class="form-control" ng-model="rc.phone_number" placeholder="Enter phone number" required="Please enter">
                                 </div>
                             </div>
                         </div>

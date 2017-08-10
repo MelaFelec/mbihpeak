@@ -18,12 +18,16 @@ router
 
 //User routes
 router
-  .route('/users')
+  .route('/user/register')
   .post(ctrlUsers.addOneUser);
 
 router
   .route('/user/:id')
   .get(ctrlUsers.getOneUser);
+
+  router
+    .route('/user/login')
+    .get(ctrlUsers.login);
 
 //Tour routes
 router

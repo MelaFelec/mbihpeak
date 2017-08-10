@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var bcrypt = require('bcrypt-nodejs');
+var jwt = require('jsonwebtoken');
 
 module.exports.getOneUser = function(req, res){
   var id = req.params.id;
@@ -42,7 +44,7 @@ module.exports.addOneUser = function(req, res) {
       phone_number : req.body.phone_number,
       email : req.body.email,
       username : req.body.username,
-      password : req.body.password
+      password : bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
     }, function(err, user) {
       if (err) {
         console.log("Error creating user");
@@ -56,4 +58,46 @@ module.exports.addOneUser = function(req, res) {
           .json(user);
       }
     });
+};
+
+module.exports.login = function(req, res) {
+  console.log('logging in user');
+  var username = req.body.username;
+  var password = req.body.password;
+
+  User.findOne({
+    username:username
+  }).exec(function(err,user){
+    if (err) {
+      res
+        .status(400)
+        .json(err);
+    } else {
+      if(bcrypt.compareSync(password, user.password)){
+        console.log("User created!", user);
+        var token = jwt.sign({username: user.username}, 's3cr3t', {expiresIn: 3600});
+        res.status(201).json(success: true, token: token);
+      } else{
+        res.status(401).json('Unauthorized');
+      }
+    }
+  });
+};
+
+module.exports.authenticate = function(req, res, next){
+  var headerExists = req.headers.authorization;
+  if(headerExists){
+    var token = req.headers.authorization.split(' ')[1];
+    jwt.verify(token, 's3cr3t',function(error, decoded){
+      if(error){
+      console.log(error);
+      res.status(401).json('Unauthorized');
+    } else{
+      req.user = decoded.username;
+      next();
+    }
+  });
+  } else{
+  res.status(403).json('No token provided');
+  }
 };

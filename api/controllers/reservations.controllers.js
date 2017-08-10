@@ -41,12 +41,12 @@ module.exports.getOneReservation = function(req, res){
       payed : req.body.payed
     }, function(err, association) {
       if (err) {
-        console.log("Error creating association");
+        console.log("Error creating reservation");
         res
           .status(400)
           .json(err);
       } else {
-        console.log("Association created!", association);
+        console.log("Reservation created!", association);
         res
           .status(201)
           .json(association);
