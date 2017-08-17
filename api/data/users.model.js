@@ -1,20 +1,13 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
-  _id : {
-    type : mongoose.Schema.Types.ObjectId
-  },
   fullname : {
     type : String,
     required : true
   },
-  state : {
-    type : String,
-    required : true
-  },
-  city : {
-    type : String,
-    required : true
+  city_id : {
+    type : mongoose.Schema.Types.ObjectId, ref: 'City',
+    required : false
   },
   address : {
     type : String,
@@ -26,17 +19,19 @@ var userSchema = new mongoose.Schema({
   },
   email : {
     type : String,
-    unique: true,
     required : true
   },
   username : {
     type : String,
-    unique: true,
     required : true
   },
   password : {
     type : String,
     required : true
+  },
+  status : {
+    type : String,
+    default : "user"
   }
 });
 

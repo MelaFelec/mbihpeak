@@ -5,7 +5,8 @@ var ctrlAssociations = require('../controllers/associations.controllers.js');
 var ctrlUsers = require('../controllers/users.controllers.js');
 var ctrlTours = require('../controllers/tours.controllers.js');
 var ctrlReservations = require('../controllers/reservations.controllers.js');
-
+var ctrlStates = require('../controllers/states.controllers.js');
+var ctrlCities = require('../controllers/cities.controllers.js');
 //Association routes
 router
   .route('/associations')
@@ -27,7 +28,7 @@ router
 
   router
     .route('/user/login')
-    .get(ctrlUsers.login);
+    .post(ctrlUsers.login);
 
 //Tour routes
 router
@@ -48,5 +49,22 @@ router
   .route('/reservation/:id')
   .get(ctrlReservations.getOneReservation);
 
+//State routes
+router
+  .route('/states')
+  .get(ctrlStates.getAllStates);
+
+router
+  .route('/state/:id')
+  .get(ctrlStates.getOneState);
+
+//City routes
+router
+  .route('/cities')
+  .get(ctrlCities.getAllCities);
+
+router
+  .route('/city/:id')
+  .get(ctrlCities.getOneCity);
 
 module.exports = router;

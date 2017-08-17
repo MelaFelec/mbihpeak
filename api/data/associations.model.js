@@ -12,12 +12,8 @@ var associationSchema = new mongoose.Schema({
     type : String,
     required : true
   },
-  state : {
-    type : String,
-    required : true
-  },
-  city : {
-    type : String,
+  city_id : {
+    type : mongoose.Schema.Types.ObjectId, ref: 'City',
     required : true
   },
   address : {
@@ -30,11 +26,13 @@ var associationSchema = new mongoose.Schema({
   },
   email : {
     type : String,
-    required : true
+    required : true,
+    unique: true
   },
   username : {
     type : String,
-    required : true
+    required : true,
+    unique: true
   },
   password : {
     type : String,

@@ -3,7 +3,7 @@
     <div id="tf-home" class="text-center">
         <div class="overlay">
             <div class="content">
-                <h1>Welcome on <strong><span class="color1">MBiHPeak</span></strong></h1>
+                <h1>Welcome to <strong><span class="color1">MBiHPeak</span></strong></h1>
                 <p class="lead"> "It is not the <strong><span class="color1">mountain</span></strong> we conquer but ourselves."</p>
                 <button type="submit" class="btn tf-btn btn-success" onclick="window.location.href='#/#tf-signin'">Register</button>
                 <br></br>
@@ -258,9 +258,9 @@
                     <li class="pull-left"><h4 class="color">Filter by Type:</h4></li>
                     <li class="pull-right">
                         <ol class="type">
-                            <li><a href="#" data-filter="*" class="active"><strong>All</strong></a></li>
-                            <li><a href="#" data-filter=".clothing"><strong>Clothing</strong></a></li>
-                            <li><a href="#" data-filter=".food"><strong>Food</strong></a></li>
+                            <li><a href="/#/#" data-filter="*" class="active"><strong>All</strong></a></li>
+                            <li><a href="/#/#" data-filter=".clothing"><strong>Clothing</strong></a></li>
+                            <li><a href="/#/#tf-eqip#" data-filter=".food"><strong>Food</strong></a></li>
                             <li><a href="#" data-filter=".shelter" ><strong>Shelter</strong></a></li>
                             <li><a href="#" data-filter=".other" ><strong>Other</strong></a></li>
                         </ol>
@@ -578,10 +578,10 @@
 -->
     <!-- Register Section
     ==========================================-->
-    <div id="tf-signin" class="text-center">
+    <div id="tf-signin" class="text-center" ng-controller="LoginController as lc" ng-init="lc.init()">
         <div class="container" style="margin:auto">
 
-            <div class="row">
+            <div class="row" ng-if="!lc.isLoggedIn()">
                 <div class="col-md-8 col-md-offset-2" style='display'>
 
                     <div class="section-title center">
@@ -596,26 +596,21 @@
                             <hr>
                         </div>
                         <div class="clearfix"></div>
+
                     </div>
 
-                    <form>
+                    <form role="login" ng-submit="lc.login()">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email" required="Please enter">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Enter username" required="Please enter">
+                                    <input type="text" class="form-control" id="username" ng-model="lc.username" placeholder="Enter username" required="Please enter">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Enter password" required="Please enter">
+                                    <input type="password" class="form-control" id="password" ng-model="lc.password" placeholder="Enter password" required="Please enter">
                                 </div>
                             </div>
                         </div>
@@ -630,6 +625,10 @@
 
                 </div>
 
+            </div>
+            <div ng-if="lc.isLoggedIn()">
+              <div class="navbar-text">Welcome back {{ lc.loggedInUser }}</div>
+              <div><button class="btn tf-btn btn-default" ng-click="lc.logout()">Logout</button></div>
             </div>
 
         </div>

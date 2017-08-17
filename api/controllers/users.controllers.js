@@ -34,30 +34,34 @@ module.exports.getOneUser = function(req, res){
 
 module.exports.addOneUser = function(req, res) {
   console.log("POST new user");
+  console.log(req.body.fullname + " " + mongoose.Types.ObjectId(req.body.city_id));
 
-  User
-    .create({
-      fullname : req.body.name,
-      state : req.body.state,
-      city : req.body.city,
-      address : req.body.address,
-      phone_number : req.body.phone_number,
-      email : req.body.email,
-      username : req.body.username,
-      password : bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-    }, function(err, user) {
-      if (err) {
-        console.log("Error creating user");
-        res
-          .status(400)
-          .json(err);
-      } else {
-        console.log("User created!", user);
-        res
-          .status(201)
-          .json(user);
-      }
-    });
+  var item = {
+    fullname : req.body.fullname,
+    city_id : mongoose.Types.ObjectId(req.body.city_id),
+    address : req.body.address,
+    phone_number : req.body.phone_number,
+    email : req.body.email,
+    username : req.body.username,
+    password : bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  };
+
+  var data = new User(item);
+  console.log("Podaci " + data);
+
+  data.save(function(err, user) {
+    if (err) {
+      console.log("Error creating user");
+      res
+        .status(400)
+        .json(err);
+    } else {
+      console.log("User created!", user);
+      res
+        .status(201)
+        .json(user);
+    }
+  });
 };
 
 module.exports.login = function(req, res) {
@@ -76,7 +80,7 @@ module.exports.login = function(req, res) {
       if(bcrypt.compareSync(password, user.password)){
         console.log("User created!", user);
         var token = jwt.sign({username: user.username}, 's3cr3t', {expiresIn: 3600});
-        res.status(201).json(success: true, token: token);
+        res.status(201).json({success: true, token: token});
       } else{
         res.status(401).json('Unauthorized');
       }

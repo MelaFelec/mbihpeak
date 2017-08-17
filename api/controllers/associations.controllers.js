@@ -55,8 +55,7 @@ module.exports.addOneAssociation = function(req, res) {
     .create({
       name : req.body.name,
       description : req.body.description,
-      state : req.body.state,
-      city : req.body.city,
+      city_id : req.body.city_id,
       address : req.body.address,
       phone_number : req.body.phone_number,
       email : req.body.email,

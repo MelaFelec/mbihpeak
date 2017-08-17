@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var dburl = 'mongodb://mbihpeak.com:Xp7Mshgwnrrt@80.65.165.60:2721/mbihpeak?authSource=admin';
 
+mongoose.Promise = global.Promise;
 mongoose.connect(dburl);
 
 mongoose.connection.on('connected', function(){
@@ -31,3 +32,5 @@ require('./users.model');
 require('./tours.model');
 require('./mountains.model');
 require('./reservations.model');
+require('./cities.model');
+require('./states.model');
