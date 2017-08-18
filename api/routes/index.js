@@ -26,9 +26,13 @@ router
   .route('/user/:id')
   .get(ctrlUsers.getOneUser);
 
-  router
-    .route('/user/login')
-    .post(ctrlUsers.login);
+router
+  .route('/user/login')
+  .post(ctrlUsers.login);
+
+router
+  .route('/users')
+  .get(ctrlUsers.getAllUsers);
 
 //Tour routes
 router

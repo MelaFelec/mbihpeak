@@ -63,6 +63,23 @@ module.exports.addOneUser = function(req, res) {
     }
   });
 };
+module.exports.getAllUsers = function(req, res){
+  console.log("Get all users");
+
+  User
+    .find()
+    .exec(function(err, users){
+      console.log(err);
+      console.log(users);
+      if(err){
+        console.log("Error finding users");
+        res.status(500).json(err);
+      } else{
+        console.log("Found users ", users.length);
+        res.json(users);
+      }
+    });
+};
 
 module.exports.login = function(req, res) {
   console.log('logging in user');
