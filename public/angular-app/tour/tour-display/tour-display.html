@@ -1,0 +1,94 @@
+<div id="tf-tour" class="text-center">
+    <div class="container" style="margin:auto">
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2" style='display'>
+
+                <div class="section-title center">
+                    <h2><strong>Tour:</strong>  {{tc.tour.name}}</h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="tc.message" class="alert alert-success" role="alert">
+                    <p>{{tc.message}}</p>
+                    <p>Do you want to delete the reservation?</p>
+                    <button type="submit" class="btn tf-btn btn-danger" ng-click="tc.deletereser(tc.res_id, tc.number)">Delete Reservation</button>
+                </div>
+                <div class="row">
+                  <div ng-if="tc.user.status=='assoc' && tc.user._id==tc.checkId">
+                    <button type="submit" class="btn tf-btn btn-danger" ng-click='tc.deletetour(tc.id, tc.checkId)'>Delete Tour</button>
+                  </div>
+                  <div ng-if="tc.user.status=='assoc' && tc.user._id==tc.checkId">
+                    <button type="submit" class="btn tf-btn btn-success" ng-click="tc.routeToEdit(tc.id)">Edit Tour</button>
+                  </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <a href="#" class="snip1452 ion-happy-outline"></a>
+                    <h4 style="font-size:20px; color:#FCAC45">{{tc.tour.description}}</h4>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <a href="#" class="snip1452 ion-happy-outline"></a>
+                    <h4 style="font-size:20px; color:#FCtc45"> Make your reservation until <p style="font-size:20px; color:#FCAC45">{{tc.tour.end_reservation_date}}</p></h4>
+                    <h4 style="font-size:20px; color:#FCtc45"> Start the journey with us from <p style="font-size:20px; color:#FCAC45">{{tc.tour.start_date}}</p></h4>
+                    <h4 style="font-size:20px; color:#FCtc45"> Until <p style="font-size:20px; color:#FCAC45">{{tc.tour.end_date}}</p></h4>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <a href="#" class="snip1452 ion-social-euro"></a>
+                    <h4 style="font-size:20px; color:#FCtc45">Pay only <p style="font-size:20px; color:#FCAC45">{{tc.tour.price}} €</p></h4>
+                    <h4 style="font-size:20px; color:#FCtc45">and hurry up to reserve... <p style="font-size:20px; color:#FCAC45">{{tc.tour.number_of_available_places}} available places left!</p> </h4>
+                </div>
+            </div>
+
+            <div class="col-md-4"></div>
+            <div class="col-md-6">
+              <div ng-if="tc.user.status=='user' && !tc.message">
+                <form ng-submit="tc.reserve()" name="forma">
+                  <div ng-hide ng-model="tc.checkId"></div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="number_of_reservations">Number of reservations</label>
+                              <input type="number" class="form-control" ng-model="tc.number_of_reservations" max="3" required="Please enter">
+                          </div>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn tf-btn btn-success">Make reservation</button>
+                </form>
+              </div>
+            </div>
+            <div class="row">
+              <div ng-if="tc.user.status=='assoc' && tc.user._id==tc.checkId">
+                <div class="section-title center">
+                    <h2><strong>Reservations</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-3"></div>
+                <table class="col-md-6">
+                  <tr>
+                    <td style="background-color:#FCAC45; font-size:24px">Users</td>
+                    <td style="background-color:#FCAC45; font-size:24px">Payed</td>
+                    <td style="background-color:#FCAC45; font-size:24px">Action</td>
+                  </tr>
+                  <tr ng-repeat="x in tc.reservations">
+                    <td style="font-size:16px !important">{{ x.name }}</td>
+                    <td ng-if="x.payed" style="background-color:#00510b; font-size:16px">YES</td>
+                    <td ng-if="!x.payed" style="background-color:#9e000a; font-size:16px">NO</td>
+                    <td><button type="submit" class="btn tf-btn btn-danger" ng-click="tc.deletereser(x.res_id, x.number)">Delete Reservation</button></td>
+                  </tr>
+                </table>
+                <div class="col-md-3"></div>
+              </div>
+          </div>
+        </div>
+
+    </div>
+</div>

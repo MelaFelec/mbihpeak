@@ -82,25 +82,25 @@ module.exports.getAllUsers = function(req, res){
 };
 
 module.exports.login = function(req, res) {
-  console.log('logging in user');
+  console.log('logging in user ' +req.body.password);
   var username = req.body.username;
   var password = req.body.password;
 
   User.findOne({
     username:username
   }).exec(function(err,user){
-    if (err) {
+    if (err || user==null) {
       res
         .status(400)
-        .json(err);
+        .json({success: false, msg: 'No data found'});
     } else {
-      if(bcrypt.compareSync(password, user.password)){
-        console.log("User created!", user);
-        var token = jwt.sign({username: user.username}, 's3cr3t', {expiresIn: 3600});
-        res.status(201).json({success: true, token: token});
-      } else{
-        res.status(401).json('Unauthorized');
-      }
+        if(bcrypt.compareSync(password, user.password)){
+          console.log("User created!", user);
+          var token = jwt.sign({username: user.username, password: password}, 's3cr3t', {expiresIn: 3600});
+          res.status(201).json({success: true, token: token, user: user});
+        } else{
+          res.status(401).json('Unauthorized');
+        }
     }
   });
 };
@@ -122,3 +122,29 @@ module.exports.authenticate = function(req, res, next){
   res.status(403).json('No token provided');
   }
 };
+
+ module.exports.getUsersByIds = function(req, res){
+   var ids = [];
+   for(var i=0; i<req.body.length; i++){
+     ids[i] = mongoose.Types.ObjectId(req.body[i].user_id);
+   }
+   User
+     .find({_id : {
+       $in: ids}})
+     .exec(function(err, users){
+       if(err){
+         console.log("Error finding users");
+         res.status(500).json(err);
+       } else if (!users) {
+         console.log('Users not found in db');
+         response.status = 404;
+         response.message = {
+           "message" : "users not found"
+         };
+       }
+       else{
+         console.log("Found tours ", users);
+         res.json(users);
+       }
+     });
+ };

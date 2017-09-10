@@ -53,17 +53,27 @@
     <div id="tf-team" class="text-center" ng-controller="AssociationsController as ac">
         <div class="overlay">
             <div class="container">
-                <div class="section-title center">
+                <div>
                     <h2>Meet and join our <strong> <br></br> associations</strong></h2>
-                    <div class="line">
-                        <hr>
-                        <ul>
-                          <li ng-repeat="assoc in ac.associations">{{assoc.name}}</li>
-                        </ul>
+                    <br></br>
+                    <div ng-if="ac.isLoggedIn() && ac.user.status=='admin'">
+                      <button type="submit" class="btn tf-btn btn-success" onclick="window.location.href='#/addassociation'">Add Association</button>
                     </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <hr>
+                        <table>
+                          <tr ng-repeat="assoc in ac.associations">
+                            <td style="font-weight: 900">{{assoc.name}}</td>
+                            <td>{{assoc.description}}</td>
+                            <td><a href="#/association/{{assoc._id}}" class="snip1582">See Profile</a></td>
+                          </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-3"></div>
                 </div>
 
-                <div id="team" class="owl-carousel owl-theme row">
+                <div id="tf-team" class="owl-carousel owl-theme row">
                     <div class="item">
                         <div class="thumbnail">
                             <img src="img/team/01.jpg" alt="..." class="img-circle team-img">
@@ -158,7 +168,7 @@
     </div>
 
     <!-- Tours Section
-    ==========================================-->
+
     <div id="tf-services" class="text-center">
         <div class="container">
             <div class="section-title center">
@@ -197,7 +207,7 @@
             </div>
         </div>
     </div>
-
+    ==========================================-->
     <!-- Clients Section
     ==========================================
     <div id="tf-clients" class="text-center">
@@ -254,7 +264,7 @@
 
             <div class="categories">
 
-                <ul class="cat">
+              <!--  <ul class="cat">
                     <li class="pull-left"><h4 class="color">Filter by Type:</h4></li>
                     <li class="pull-right">
                         <ol class="type">
@@ -265,7 +275,7 @@
                             <li><a href="#" data-filter=".other" ><strong>Other</strong></a></li>
                         </ol>
                     </li>
-                </ul>
+                </ul>-->
                 <div class="clearfix"></div>
             </div>
 
@@ -275,14 +285,13 @@
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
-                              <div class="hover-text">
-                                  <h4>Jackets</h4>
-                                  <div class="clearfix"></div>
+                          <div class="hover-text">
+                                <h4>Jackets</h4>
+                                <div class="clearfix"></div>
                                   <!--<i class="fa fa-plus"></i>-->
-                              </div>
-                              <img src="img/portfolio/09.jpg" class="img-responsive" alt="...">
-                          </a>
+                            </div>
+                            <img src="img/portfolio/09.jpg" class="img-responsive" alt="...">
+
                       </div>
                   </div>
               </div>
@@ -290,7 +299,6 @@
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Jackets</h4>
                                   <h4>Pants</h4>
@@ -298,7 +306,7 @@
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/16.jpg" class="img-responsive" alt="...">
-                          </a>
+
                       </div>
                   </div>
               </div>
@@ -306,27 +314,24 @@
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Hiking Boots</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/13.jpg" class="img-responsive" alt="...">
-                          </a>
+
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Backpacks</h4>
                                   <h4>Outfit</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/12.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
@@ -334,52 +339,44 @@
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Hiking Outfits</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/17.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Hiking Outfit</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/18.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Backpack</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/19.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 clothing">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Hiking Boots</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/2.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
@@ -388,52 +385,44 @@
               <div class="col-sm-6 col-md-3 col-lg-3 food">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Food</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/8.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 food">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Vacuum flask</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/6.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 food">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Food</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/9.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 food">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Vacuum flask</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/7.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
@@ -442,28 +431,24 @@
               <div class="col-sm-6 col-md-3 col-lg-3 shelter">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
                                 <div class="hover-text">
                                     <h4>Tent</h4>
                                     <h4>Sleeping Bag</h4>
                                     <div class="clearfix"></div>
                                 </div>
                                 <img src="img/portfolio/5.jpg" class="img-responsive" alt="...">
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3 shelter">
                       <div class="portfolio-item">
                           <div class="hover-bg">
-                              <a href="#">
                                   <div class="hover-text">
                                     <h4>Tent</h4>
                                     <h4>Sleeping Bag</h4>
                                     <div class="clearfix"></div>
                                   </div>
                                   <img src="img/portfolio/22.jpg" class="img-responsive" alt="...">
-                              </a>
                           </div>
                       </div>
                   </div>
@@ -472,66 +457,57 @@
                   <div class="col-sm-6 col-md-3 col-lg-3 other">
                     <div class="portfolio-item">
                         <div class="hover-bg">
-                            <a href="#">
+
                                 <div class="hover-text">
                                     <h4>Headlamp</h4>
                                     <div class="clearfix"></div>
                                 </div>
                                 <img src="img/portfolio/3.jpg" class="img-responsive" alt="...">
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3 other">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Sticks</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/23.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-3 col-lg-3 other">
                   <div class="portfolio-item">
                       <div class="hover-bg">
-                          <a href="#">
                               <div class="hover-text">
                                   <h4>Gloves</h4>
                                   <div class="clearfix"></div>
                               </div>
                               <img src="img/portfolio/24.jpg" class="img-responsive" alt="...">
-                          </a>
                       </div>
                   </div>
               </div>
               <div class="col-sm-6 col-md-3 col-lg-3 other">
                 <div class="portfolio-item">
                     <div class="hover-bg">
-                        <a href="#">
                             <div class="hover-text">
                                 <h4>Helmet</h4>
                                 <h4>Mountain Goggles</h4>
                                 <div class="clearfix"></div>
                             </div>
                             <img src="img/portfolio/25.jpg" class="img-responsive" alt="...">
-                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-3 other">
               <div class="portfolio-item">
                   <div class="hover-bg">
-                      <a href="#">
                           <div class="hover-text">
                               <h4>Mountain Axe</h4>
                               <div class="clearfix"></div>
                           </div>
                           <img src="img/portfolio/26.jpg" class="img-responsive" alt="...">
-                      </a>
                   </div>
               </div>
           </div>
@@ -601,6 +577,9 @@
 
                     <form role="login" ng-submit="lc.login()">
                         <div class="row">
+                          <div ng-if="lc.error" class="alert alert-danger" role="alert">
+                              <p>{{lc.error}}</p>
+                          </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="username">Username</label>
@@ -627,7 +606,7 @@
 
             </div>
             <div ng-if="lc.isLoggedIn()">
-              <div class="navbar-text">Welcome back {{ lc.loggedInUser }}</div>
+              <div class="navbar-text">Welcome back {{ lc.loggedInUser.username }}</div>
               <div><button class="btn tf-btn btn-default" ng-click="lc.logout()">Logout</button></div>
             </div>
 

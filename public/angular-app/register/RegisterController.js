@@ -1,20 +1,31 @@
 angular.module('mbihpeakApp').controller('RegisterController', RegisterController);
 
-function RegisterController($http, cityDataFactory, userDataFactory){
+function RegisterController($http, cityDataFactory, userDataFactory, associationDataFactory){
   var rc = this;
   rc.title = 'TITLE';
 
-
   cityDataFactory.cityList().then(function(response){
-    rc.cities = response.data;
-    console.log(response.data[1].name);
-    console.log("cities" + rc.cities[1]._id);
+    if(response){
+      rc.cities = response.data;
+    }
+  }).catch(function(error){
+    console.log(error);
   });
 
-
   userDataFactory.allUsers().then(function(response){
-    rc.users = response.data;
-    console.log("Usernames " + rc.users[1].username);
+    if(response){
+      rc.users = response.data;
+    }
+  }).catch(function(error){
+    console.log(error);
+  });
+
+  associationDataFactory.associationsList().then(function(response){
+    if(response){
+      rc.assoc = response.data;
+    }
+  }).catch(function(error){
+    console.log(error);
   });
 
   console.log("PROŠAO");
@@ -45,6 +56,17 @@ function RegisterController($http, cityDataFactory, userDataFactory){
         nexist = false;
       }
     }
+      for(var i=0; i<rc.assoc.length; i++){
+        console.log('Ušao u assoc loop');
+        if(user.username === rc.assoc[i].username){
+          rc.error = 'Username already exists';
+          nexist = false;
+        }
+        else if(user.email === rc.assoc[i].email){
+          rc.error = 'Email already exists';
+          nexist = false;
+        }
+     }
 
     if(nexist){
       $http.post('/api/user/register', user).then(function(result){

@@ -1,0 +1,78 @@
+
+<div id="tf-edit-assoc" class="text-center">
+    <div class="container" style="margin:auto">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style='display'>
+
+                <div class="section-title center">
+                    <h2><strong>Edit association</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="etc.message" class="alert alert-success" role="alert">
+                    <p>{{etc.message}}</p>
+                </div>
+                <div ng-if="etc.error" class="alert alert-danger" role="alert">
+                    <p>{{etc.error}}</p>
+                </div>
+
+                <form ng-submit="etc.edit_tour()" name="forma">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" ng-model="etc.tourToEdit.name" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" ng-model="etc.tourToEdit.description" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="start_date">Start date</label>
+                                <input type="datetime-local" class="form-control" ng-model="etc.tourToEdit.start_date" placeholder="Enter start date" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="end_date">End date</label>
+                                <input type="datetime-local" class="form-control" ng-model="etc.tourToEdit.end_date" placeholder="Enter end date" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="number_of_available_places">Number of available places</label>
+                                <input type="number" class="form-control" ng-model="etc.tourToEdit.number_of_available_places"required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number" class="form-control" ng-model="etc.tourToEdit.price"required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="mountain">Mountain</label>
+                                <select class="multiselect" data-placeholder="Select Mountains"
+                                  ng-model="etc.tourToEdit.mountain_id" ng-options="item._id as item.name for item in etc.mountains"
+                                  multiple="multiple" multiselect-dropdown style="color: black;"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn tf-btn btn-default">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

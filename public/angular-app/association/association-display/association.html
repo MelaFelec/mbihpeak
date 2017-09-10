@@ -1,0 +1,76 @@
+<div id="tf-association" class="text-center">
+    <div class="container" style="margin:auto">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style='display'>
+
+                <div class="section-title center">
+                    <h2><strong>Association:</strong>  {{ac.assoc.name}}</h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                  <div ng-if="ac.user.status=='admin'">
+                    <button type="submit" class="btn tf-btn btn-danger" ng-click='ac.deleteassoc(ac.checkId)'>Delete Association</button>
+                  </div>
+                  <div ng-if="ac.user.status=='assoc' && ac.user._id==ac.checkId">
+                    <button type="submit" class="btn tf-btn btn-success" ng-click="ac.routeToEdit(ac.checkId)">Edit Association</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <center>
+                          <a href="#" class="snip1452 ion-android-pin "></a><h4>Located in <strong style="font-size:18px; color:#FCAC45">{{ac.city.name}}</strong></h4>
+                          <h4>address <strong style="font-size:18px; color:#FCAC45">{{ac.assoc.address}}</strong><h4>
+                        </center>
+                      </div>
+                      <div class="col-md-4">
+                        <center>
+                          <a href="#" class="snip1452 ion-ios-email-outline"></a>
+                          <h4> Send us email</h4>
+                          <h4><strong style="font-size:18px; color:#FCAC45">{{ac.assoc.email | lowercase}}</strong></h4>
+                        </center>
+                      </div>
+                      <div class="col-md-4">
+                        <center>
+                          <a href="#" class="snip1452 ion-android-call"></a>
+                          <h4> Contact us</h4>
+                          <h4><strong style="font-size:18px; color:#FCAC45">{{ac.assoc.phone_number}}</strong></h4>
+                        </center>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12"><center>
+                  <a href="#" class="snip1452 ion-happy-outline"></a>
+                  <h4 style="font-size:20px; color:#FCAC45">{{ac.assoc.description}}</h4>
+
+                  </center>
+                </div>
+                <br></br>
+                <div  ng-if="ac.user.status=='assoc' && ac.user._id==ac.checkId">
+                  <button type="submit" class="btn tf-btn btn-success" ng-click="ac.routeToAddTour()" ">Add Tour</button>
+                </div>
+                <div class="col-md-12" ng-if="ac.tours" ng-repeat="tour in ac.tours">
+                   <a href="#/tour/{{tour._id}}">
+                     <figure class="snip1081 yellow"><i class="ion-ios-paw-outline"></i>
+                       <figcaption>
+                         <div class="header" >
+                           <h2>{{tour.name}}</h2>
+                           <p>{{tour.start_date}}<br/>{{tour.end_date}}</p>
+                         </div>
+                         <p>{{tour.description}}</p>
+                      </figcaption>
+  	                 </figure>
+                   </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

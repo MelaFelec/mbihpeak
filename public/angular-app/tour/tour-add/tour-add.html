@@ -1,0 +1,79 @@
+
+<div id="tf-add-assoc" class="text-center">
+    <div class="container" style="margin:auto">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style='display'>
+
+                <div class="section-title center">
+                    <h2><strong>Add tour</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="atc.message" class="alert alert-success" role="alert">
+                    <p>{{atc.message}}</p>
+                </div>
+                <div ng-if="atc.error" class="alert alert-danger" role="alert">
+                    <p>{{atc.error}}</p>
+                </div>
+
+                <form ng-submit="atc.add_tour()" name="forma">
+                  <div ng-hide ng-model="atc.assocList">
+                  </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" ng-model="atc.name" placeholder="Enter name" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" ng-model="atc.description" placeholder="Enter description" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="start_date">Start date</label>
+                                <input type="datetime-local" class="form-control" ng-model="atc.start_date" placeholder="Enter start date" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="end_date">End date</label>
+                                <input type="datetime-local" class="form-control" ng-model="atc.end_date" placeholder="Enter end date" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="number_of_available_places">Number of available places</label>
+                                <input type="number" class="form-control" ng-model="atc.number_of_available_places" placeholder="Enter number of available places" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number" class="form-control" ng-model="atc.price" placeholder="Enter price in euros" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mountain">Mountain</label>
+                                <select class="multiselect" data-placeholder="Select Mountains"
+                                  ng-model="atc.mountain_id" ng-options="item._id as item.name for item in atc.mountains"
+                                  multiple="multiple" multiselect-dropdown style="color: black;"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn tf-btn btn-default">Add</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

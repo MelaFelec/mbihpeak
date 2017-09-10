@@ -1,4 +1,4 @@
-angular.module('mbihpeakApp', ['ngRoute', 'angular-jwt']).config(config).run(run);
+angular.module('mbihpeakApp', ['ngRoute', 'angular-jwt', 'ngCookies']).config(config).run(run);
 
 function config($httpProvider, $routeProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
@@ -18,6 +18,14 @@ function config($httpProvider, $routeProvider) {
         restricted: false
       }
     })
+    .when('/addassociation', {
+      templateUrl: 'angular-app/association/association-add/association-add.html',
+      controller: 'AddAssociationController',
+      controllerAs: 'aac',
+      access: {
+        restricted: true
+      }
+    })
     .when('/user/:id',{
       templateUrl: 'angular-app/user/user.html',
       controller: 'UserController',
@@ -30,6 +38,43 @@ function config($httpProvider, $routeProvider) {
       templateUrl: 'angular-app/gallery.html',
       access: {
         restricted: false
+      }
+    })
+    .when('/association/:id',{
+      templateUrl: 'angular-app/association/association-display/association.html',
+      controller: 'AssociationDispController',
+      controllerAs: 'ac',
+      access: {
+        restricted: false
+      }
+    }).when('/editassociation/:id', {
+      templateUrl: 'angular-app/association/association-edit/association-edit.html',
+      controller: 'EditAssociationController',
+      controllerAs: 'eac',
+      access: {
+        restricted: true
+      }
+    })
+    .when('/tour/:id',{
+      templateUrl: 'angular-app/tour/tour-display/tour-display.html',
+      controller: 'TourDisplayController',
+      controllerAs: 'tc',
+      access: {
+        restricted: false
+      }
+    }).when('/addtour',{
+      templateUrl: 'angular-app/tour/tour-add/tour-add.html',
+      controller: 'AddTourController',
+      controllerAs: 'atc',
+      access: {
+        restricted: true
+      }
+    }).when('/edittour/:id', {
+      templateUrl: 'angular-app/tour/tour-edit/tour-edit.html',
+      controller: 'EditTourController',
+      controllerAs: 'etc',
+      access: {
+        restricted: true
       }
     })
     .otherwise({

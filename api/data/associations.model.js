@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 
 var associationSchema = new mongoose.Schema({
-  _id : {
-    type : mongoose.Schema.Types.ObjectId
-  },
   name : {
     type : String,
     required : true
@@ -39,8 +36,12 @@ var associationSchema = new mongoose.Schema({
     required : true
   },
   tour_id : {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Tour',
-    required : true
+    type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Tour'}],
+    required : false
+  },
+  status: {
+    type: String,
+    default : "assoc"
   }
 });
 

@@ -1,8 +1,10 @@
 angular.module('mbihpeakApp').controller('LoginController', LoginController);
 
-function LoginController($http, $location, $window, AuthFactory, jwtHelper) {
+function LoginController($http, $location, $route, $window, AuthFactory, jwtHelper, $cookies, $cookieStore) {
   var lc = this;
   lc.title = "UŠAO";
+
+  lc.loggedInUser = $cookieStore.get('user');
 
   lc.isLoggedIn = function(){
     if(AuthFactory.isLoggedIn){
@@ -25,18 +27,40 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper) {
           AuthFactory.isLoggedIn = true;
           var token = $window.sessionStorage.token;
           var decodedToken = jwtHelper.decodeToken(token);
-          lc.loggedInUser = decodedToken.username;
+
+          $cookieStore.put('user', response.data.user);
+          $cookies.isLoggedIn = true;
+          lc.loggedInUser = $cookieStore.get('user');
+          $route.reload();
         }
       }).catch(function(error){
-        console.log(error);
+
+        $http.post('/api/association/login', user).then(function(response){
+          if(response.data.success){
+            $window.sessionStorage.token = response.data.token;
+            AuthFactory.isLoggedIn = true;
+            var token = $window.sessionStorage.token;
+            var decodedToken = jwtHelper.decodeToken(token);
+
+            $cookieStore.put('user', response.data.user);
+            $cookies.isLoggedIn = true;
+            lc.loggedInUser = $cookieStore.get('user');
+            $route.reload();
+          }
+        }).catch(function(error){
+          if(error.data.success==false){
+            lc.error = 'Login failed! Try again...'
+          }
+        })
       })
+
     }
   }
 
   lc.logout = function(){
     AuthFactory.isLoggedIn = false;
     delete $window.sessionStorage.token;
-    $location.path('/#tf-home');
+    $route.reload();
   }
 
   lc.isActive = function(url){

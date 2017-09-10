@@ -1,0 +1,90 @@
+
+<div id="tf-edit-assoc" class="text-center">
+    <div class="container" style="margin:auto">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style='display'>
+
+                <div class="section-title center">
+                    <h2><strong>Edit association</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div ng-if="eac.message" class="alert alert-success" role="alert">
+                    <p>{{eac.message}}</p>
+                </div>
+                <div ng-if="eac.error" class="alert alert-danger" role="alert">
+                    <p>{{eac.error}}</p>
+                </div>
+
+                <form ng-submit="eac.edit_assoc()" name="forma">
+                  <div ng-hide ng-model="eac.assocList"></div>
+                  <div ng-hide ng-model="eac.users">
+                  </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" ng-model="eac.assocToEdit.email" required="Please enter">
+                                <span style ="color: red" ng-show="forma.email.$dirty && forma.email.$invalid">
+                                  <span ng-show="forma.email.$error.email">Invalid email address</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.username" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.password" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.name" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.address" required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="phone_number">Phone number</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.phone_number"required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" ng-model="eac.assocToEdit.description"required="Please enter">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <select ng-model="eac.assocToEdit.city_id" style="color: black" >
+                                  <option ng-repeat="city in eac.cities" value="{{city._id}}" style="color: black;">{{city.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn tf-btn btn-default">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

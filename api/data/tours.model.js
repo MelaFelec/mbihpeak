@@ -2,9 +2,6 @@ var mongoose = require('mongoose');
 var statuses = ['A', 'C', 'F', 'O'];
 
 var tourSchema = new mongoose.Schema({
-  _id : {
-    type : mongoose.Schema.Types.ObjectId
-  },
   name : {
     type : String,
     required: true
@@ -40,8 +37,8 @@ var tourSchema = new mongoose.Schema({
     required : true
   },
   mountain_id : {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Mountain',
-    required : true
+    type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Mountain'}],
+    required : false
   }
 });
 
